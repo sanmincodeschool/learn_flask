@@ -1,6 +1,6 @@
 #-*- coding: utf8 -*-
 
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 import logging
 
 
@@ -10,9 +10,14 @@ app = Flask(__name__)
 
 @app.route('/index/',methods=['GET','POST'])
 def index():
-    logging.warn('请求到了')
+    # logging.warn('请求到了')
+
+    account = request.args.get('account',None)
+
+    print(account)
+
     data = {
-        "data": '数据',
+        "data": account,
         "code": 0,
         "msg": "ok"
     }
